@@ -1,0 +1,1325 @@
+/* Importación de fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Stalinist+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Dancing+Script:wght@400;600;700&display=swap');
+
+
+/* =====================================================
+   RESET CSS Y VARIABLES GLOBALES
+   ===================================================== */
+
+/* Reset universal - elimina márgenes y padding predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+
+
+/* Configuración básica del body */
+body {
+    min-height: 70vh;
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+/*=================================================*/
+/*ESTILOS PARA LA BARRA DE NAVEGACIÓN FIJA*/
+/*=================================================*/
+
+/* Contenedor principal de la navbar con efecto glassmorphism */
+
+nav {
+    background-color: rgba(25, 63, 109, 0.858);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    /* Fija en la parte superior al hacer scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ocupa todo el ancho */
+    height: auto;
+    z-index: 999;
+    /* Por encima de otros elementos */
+    transition: all 0.3s ease;
+    /* Transición suave para efectos */
+}
+
+.nav-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    /* filter: brightness(0.6); */
+}
+
+/* Lista de navegación*/
+
+.bar ul,
+.bar a {
+    position: relative;
+    z-index: 1;
+}
+
+.bar img {
+    height: 55px;
+    width: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Altura uniforme para elementos de navegación */
+nav li {
+    height: 60px;
+}
+
+/* Estilos para enlaces de navegación */
+nav a {
+    font-family: var(--font-body);
+    letter-spacing: 0.5px;
+    height: 100%;
+    padding: 0 30px;
+    /* Espaciado horizontal interno */
+    text-decoration: none;
+    /* Sin subrayado */
+    display: flex;
+    align-items: center;
+    /* Centra verticalmente el texto */
+    color: #ffff;
+    /* Texto blanco */
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Efecto hover en enlaces */
+nav a:hover {
+    color: #20a0db;
+    /* Cambia a azul claro al pasar mouse */
+}
+
+/* Logo/primer elemento - se posiciona a la izquierda */
+nav li:first-child {
+    margin-right: auto;
+
+    /* Empuja otros elementos a la derecha */
+}
+
+/* MENÚ LATERAL (SIDEBAR) PARA DISPOSITIVOS MÓVILES */
+.sidebar {
+    position: fixed;
+    /* Posición fija en pantalla */
+    top: 0;
+    right: 0;
+    /* Se desliza desde la derecha */
+    height: 100vh;
+    /* Altura completa de la ventana */
+    width: 250px;
+    /* Ancho fijo */
+    z-index: 999;
+    /* Por encima de otros elementos */
+    background-color: #1e4370a0;
+    /* Color semitransparente */
+    backdrop-filter: blur(10px);
+    /* Efecto de vidrio esmerilado */
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    /* Sombra hacia la izquierda */
+    display: none;
+    /* Oculto por defecto */
+    flex-direction: column;
+    /* Elementos apilados verticalmente */
+    align-items: flex-start;
+    /* Alineado al inicio */
+    justify-content: flex-start;
+    /* Contenido al inicio */
+}
+
+/* Elementos de lista en sidebar ocupan todo el ancho */
+.sidebar li {
+    width: 100%;
+}
+
+/* Enlaces en sidebar ocupan todo el ancho para facilitar clic */
+.sidebar a {
+    width: 100%;
+}
+
+.menu-boton {
+    display: none;
+}
+
+/* Estilos para iconos SVG en navegación */
+nav svg {
+    fill: white;
+    /* Color blanco por defecto */
+}
+
+/* Efecto hover en iconos SVG */
+nav svg:hover {
+    fill: #2ca5de;
+    /* Cambio a azul al hacer hover */
+}
+
+/*=================================================*/
+/*ESTILOS PARA EL CAROUSEL INFINITO DE PLATOS POPULARES*/
+/*=================================================*/
+
+/* Contenedor principal con imagen de fondo */
+article {
+    padding-top: 2rem;
+    padding-bottom: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    /* Elementos apilados verticalmente */
+    gap: 2rem;
+    /* Espacio entre elementos */
+    background-image: url(../images/Imagenes-fondos/CEVICHE-LARGO.png);
+    /* Imagen de fondo */
+    background-size: cover;
+    /* Cubre todo el contenedor */
+    background-position: center;
+    /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* No repetir imagen */
+}
+
+main {
+    padding-top: 3.1rem;
+}
+
+/* Título de la sección "Los populares" */
+h1,
+.menu-titulo,
+.menu-contenedor h2,
+.contactanos h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.menu-titulo {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    padding-top: .8rem;
+    padding-bottom: 2rem;
+    font-size: 3.5vw;
+    color: #0b167f;
+}
+
+/* Contenedor del carousel con scroll horizontal */
+.carousel {
+    /* efecto desvanecido en los bordes  */
+    mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+
+    margin: auto;
+    width: 85%;
+    /* 90% del ancho disponible */
+    display: flex;
+    overflow-x: auto;
+    /* Scroll horizontal */
+    z-index: 2;
+    /* Por encima del fondo */
+}
+
+/* Oculta la barra de scroll del carousel */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Contenedor animado que se mueve infinitamente */
+.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    /* Espacio entre elementos */
+    animation: spin 12s linear infinite;
+    /* Animación infinita de 12 segundos */
+    padding-right: 1em;
+}
+
+/* Cada elemento individual del carousel */
+.wrap-element {
+    flex: 0 0 5em;
+    /* No crece, no se encoge, tamaño base 5em */
+    text-align: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    /* Imagen arriba, texto abajo */
+    gap: 2rem;
+    /* Espacio entre imagen y texto */
+}
+
+/* Imágenes de los platos populares */
+.wrap img {
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    object-fit: cover;
+    /* Mantiene proporciones */
+    margin: 0 auto;
+    /* Centrado */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Sombra para profundidad */
+}
+
+/* Títulos de los platos */
+.wrap h2,
+.contenedor-img span {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #0B167F;
+}
+
+/* Animación de movimiento infinito del carousel */
+@keyframes spin {
+    from {
+        translate: 0;
+    }
+
+    /* Posición inicial */
+    to {
+        translate: -100%;
+    }
+
+    /* Se mueve 100% hacia la izquierda */
+}
+
+/*=================================================*/
+/*GRID LAYOUT PARA CATEGORÍAS DEL MENÚ*/
+/*=================================================*/
+
+/* Contenedor principal de la sección menú */
+.menu-contenedor {
+    scroll-margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    /* Elementos apilados verticalmente */
+    gap: 4rem;
+    /* Gran espacio entre elementos */
+    margin: auto;
+    padding: 0 8rem;
+    /* Padding lateral */
+}
+
+/* Título de la sección "Nuestro menú" */
+.menu-contenedor h2 {
+    text-transform: uppercase;
+    padding-top: 3.9rem;
+    /* Gran espacio superior */
+    display: flex;
+    justify-content: center;
+    /* Centrado */
+    font-size: 3.5vw;
+    color: #0b167f;
+    font-weight: 700;
+}
+
+/* GRID LAYOUT AVANZADO CON ÁREAS PERSONALIZADAS */
+.contenedor-img {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* 7 columnas iguales */
+    grid-template-rows: 1.2fr 1.1fr 1fr 1fr 1fr 1fr;
+    /* 6 filas con alturas variables */
+    gap: 20px 20px;
+    /* Espaciado uniforme entre elementos */
+
+    /* DEFINICIÓN DE ÁREAS PERSONALIZADAS PARA CADA CATEGORÍA */
+    grid-template-areas:
+        "area1 area1 area1 area1 area2 area2 area2"
+        /* Fila 1: Leches de tigre (4 cols) + Ceviches (3 cols) */
+        "area1 area1 area1 area1 area2 area2 area2"
+        /* Fila 2: Continúan las áreas grandes */
+        "area3 area3 area3 area4 area4 area5 area5"
+        /* Fila 3: Sopas (3 cols) + Tiraditos (2 cols) + Arroces (2 cols) */
+        "area3 area3 area3 area4 area4 area5 area5"
+        /* Fila 4: Continúan las áreas medianas */
+        "area3 area3 area3 area6 area6 area6 area6"
+        /* Fila 5: Sopas continúa + Piqueos (4 cols) */
+        "area3 area3 area3 area6 area6 area6 area6";
+    /* Fila 6: Completa el layout */
+}
+
+/* Estilos comunes para todas las áreas del grid */
+.area1,
+.area2,
+.area3,
+.area4,
+.area5,
+.area6 {
+    display: flex;
+    border-radius: 15px;
+    /* Bordes redondeados elegantes */
+    overflow: hidden;
+    /* Oculta contenido que desborda */
+}
+
+/* Efectos de hover interactivos para todas las áreas */
+.area1:hover,
+.area2:hover,
+.area3:hover,
+.area4:hover,
+.area5:hover,
+.area6:hover {
+    transform: translateY(-7px);
+    /* Elevación al hacer hover */
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.2);
+    /* Sombra profunda */
+}
+
+/* CONTENIDO DENTRO DE CADA ÁREA DEL GRID */
+
+/* Enlaces clickeables que cubren cada área completa */
+.contenedor-img a {
+    display: flex;
+    flex-direction: column;
+    /* Imagen arriba, texto abajo */
+    justify-content: flex-end;
+    /* Texto posicionado en la parte inferior */
+    align-items: center;
+    /* Centrado horizontal */
+    position: relative;
+    /* Para posicionamiento absoluto de hijos */
+    width: 100%;
+    /* Ocupa toda el área */
+    height: 100%;
+    /* Altura completa */
+    text-decoration: none;
+    /* Sin subrayado */
+    min-height: 200px;
+    /* Altura mínima garantizada */
+}
+
+/* Imágenes de fondo que cubren cada área del grid */
+.contenedor-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Mantiene proporciones y cubre toda el área */
+    position: absolute;
+    /* Posicionamiento absoluto como fondo */
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* Detrás del texto (menor z-index) */
+}
+
+/* Nombres de categorías superpuestos con efecto glassmorphism */
+.contenedor-img span {
+    background-color: #f5f5f0c0;
+    /* Fondo semitransparente */
+    backdrop-filter: blur(7px);
+    /* Efecto de vidrio esmerilado */
+    position: relative;
+    /* Por encima de la imagen */
+    z-index: 2;
+    /* Por encima de la imagen (mayor z-index) */
+    color: #6FA4AF;
+    /* Color específico para el texto */
+    padding: .2em 1em;
+    /* Espaciado interno */
+    margin-left: 25px;
+    /* Margen izquierdo */
+    width: 100%;
+    /* Ancho completo */
+    text-align: start;
+    /* Alineado a la izquierda */
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+
+}
+
+/* ASIGNACIÓN ESPECÍFICA DE CADA ÁREA DEL GRID A SU CATEGORÍA */
+.area1 {
+    grid-area: area1;
+    /* Leches de tigre - área grande superior izquierda */
+}
+
+.area2 {
+    grid-area: area2;
+    /* Ceviches - área grande superior derecha */
+}
+
+.area3 {
+    grid-area: area3;
+    /* Sopas y sudados - área vertical izquierda */
+}
+
+.area4 {
+    grid-area: area4;
+    /* Tiraditos - área mediana centro */
+}
+
+.area5 {
+    grid-area: area5;
+    /* Arroces - área mediana derecha */
+}
+
+.area6 {
+    grid-area: area6;
+    /* Piqueos y Jaleas - área horizontal inferior */
+}
+
+
+/*======================================================================*/
+/*SECCIÓN DE RESERVAS - LAYOUT DE 3 COLUMNAS*/
+/*======================================================================*/
+
+/* Contenedor principal con grid de 3 columnas iguales */
+.reservas {
+    scroll-margin-top: 30px;
+    min-height: 650px;
+    display: grid;
+    /* 3 columnas de tamaño igual */
+    grid-template-columns: repeat(3, 1fr);
+    /* Espacio mínimo entre columnas */
+    gap: 10px;
+    margin: auto;
+    /* Padding: 3rem arriba, 8rem laterales, 0 abajo */
+    padding: 3rem 8rem 0rem;
+}
+
+/* Configuración común para las 3 columnas */
+.columna1,
+.columna2,
+.columna3 {
+    /* Scroll vertical si el contenido es muy alto */
+    overflow-y: auto;
+    /* Espaciado interno uniforme */
+    padding: 1rem;
+}
+
+/*===============================================*/
+/*COLUMNA 1: FORMULARIO DE RESERVA*/
+/*===============================================*/
+
+/* Contenedor de la primera columna (formulario) */
+.columna1 {
+    display: flex;
+    flex-direction: column;
+    /* Elementos apilados verticalmente */
+}
+
+/* Título del formulario de reserva */
+.columna1 h1 {
+    font-size: 2.5rem;
+    /* Espacio inferior */
+    margin-bottom: 0.5rem;
+    display: flex;
+    /* Centrado */
+    justify-content: center;
+    color: #0b167f;
+}
+
+/* Contenedor para campos del formulario en 2 columnas */
+.contenedor-form {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Cada grupo de campos del formulario */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.form label,
+input,
+textarea,
+button {
+    font-family: var(--font-body);
+    font-weight: 400;
+}
+
+/* Estilos para inputs y selects del formulario */
+.form input,
+.form select {
+    width: 85%;
+    padding: 0.5rem;
+    margin-bottom: .5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Contenedor para campos de una sola columna */
+.contenedor-form2 {
+    display: flex;
+    flex-direction: column;
+    /* Campos apilados */
+    gap: 0.2rem;
+    /* Espacio entre campos */
+    margin-top: .3rem;
+    /* Margen superior pequeño */
+}
+
+
+
+
+.contenedor-form2 input,
+.contenedor-form2 select {
+    width: auto;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Botón de envío del formulario */
+.contenedor-form2 button {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 10px 10px 10px rgba(0, 51, 204, 0.3);
+    letter-spacing: 3px;
+    background-color: #1e4370;
+    color: white;
+    border: none;
+    padding: 0.7rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+        background-color: #2ca5de;
+        transform: translateY(-3px);
+    }
+}
+
+/*===============================================*/
+/*COLUMNA 2: ILUSTRACIÓN ANIMADA DEL CHEF*/
+/*===============================================*/
+
+/* Contenedor centrado para la imagen del chef */
+.columna2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Imagen del chef con efectos visuales */
+.columna2 img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+    animation: flotar 2s ease-in-out infinite;
+}
+
+/* Animación de flotación del chef */
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        /* Posición normal al inicio y final */
+    }
+
+    50% {
+        transform: translateY(-15px);
+        /* Elevación a la mitad del ciclo */
+    }
+}
+
+/*===============================================*/
+/*COLUMNA 3: INFORMACIÓN DE CONTACTO*/
+/*===============================================*/
+
+/* Contenedor de información de contacto */
+.columna3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.2rem;
+}
+
+/* Títulos de las secciones de contacto */
+.columna3 h1 {
+    font-size: 2.5rem;
+    color: #0b167f;
+    /* Azul corporativo */
+}
+
+/* Iconos SVG de contacto */
+.columna3 svg {
+    fill: #2ca5de;
+    /* Color azul para iconos */
+}
+
+/* Información de teléfonos */
+.telefono {
+    display: flex;
+    gap: .3rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sección de horarios */
+.horario {
+    display: flex;
+    gap: 2.2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =======================================================
+   SECCIÓN DE CONTACTO Y MAPA
+   ======================================================= */
+
+/* Contenedor principal con grid de dos columnas */
+.contactanos {
+    margin: auto;
+    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15rem;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 70px 10%;
+}
+
+/* Títulos de las secciones */
+.contactanos h1 {
+    font-size: 3rem;
+    color: #0b167f;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ============ COLUMNA 1 (Formulario de contacto) ============ */
+.contenedor-columna1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* Contenedor para los campos del formulario */
+.info-content {
+    display: flex;
+    flex-direction: column;
+    /* Elementos apilados */
+    gap: 1.8em;
+    /* Espacio entre grupos de campos */
+    margin-bottom: 20px;
+    /* Espacio antes del textarea */
+}
+
+/* Fila de inputs en horizontal (nombre+apellido, email+teléfono) */
+.info-input {
+    display: flex;
+    gap: 1em;
+    /* Espacio entre inputs en la misma fila */
+}
+
+/* Estilos generales para campos de texto y áreas de texto */
+input,
+textarea {
+    width: 100%;
+    /* Ancho completo del contenedor */
+    padding: 12px 15px;
+    /* Espaciado interno */
+    border: 1px solid #ccc;
+    /* Borde gris claro */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    font-size: 15px;
+    /* Tamaño de texto */
+    transition: all 0.3s ease;
+    /* Transición suave para efectos */
+    box-shadow: 10px 10px 10px #80A1BA;
+    /* Sombra azulada */
+}
+
+/* Efecto de enfoque para campos activos */
+input:focus,
+textarea:focus {
+    border-color: #0b167f;
+    /* Borde azul al estar activo */
+    outline: none;
+    /* Elimina el contorno predeterminado */
+    box-shadow: 10px 10px 10px rgba(0, 51, 204, 0.3);
+    /* Sombra azul más intensa */
+}
+
+/* Contenedor para el área de mensaje y botón */
+.info-textarea {
+    display: flex;
+    flex-direction: column;
+    /* Textarea arriba, botón abajo */
+    gap: 2em;
+    /* Espacio entre textarea y botón */
+}
+
+/* Configuración específica para el área de texto */
+textarea {
+    resize: none;
+    /* Impide que el usuario cambie el tamaño */
+    height: 150px;
+    /* Altura fija */
+}
+
+/* Estilos base para el botón de enviar */
+.btn-enviar {
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    align-self: center;
+    width: 50%;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 7px;
+    transition: 0.5s;
+    background: #1e4370;
+    box-shadow: 10px 10px 10px rgba(0, 51, 204, 0.3);
+
+    &:hover {
+        background-color: #2ca5de;
+        transform: translateY(-3px);
+    }
+}
+
+
+
+/* ============ COLUMNA 2 (Mapa de ubicación) ============ */
+.contenedor-columna2 {
+    display: flex;
+    flex-direction: column;
+    /* Título arriba, mapa abajo */
+    align-items: center;
+    /* Centrado horizontal */
+}
+
+/* Iframe del mapa de Google Maps */
+.contenedor-columna2 iframe {
+    width: 100%;
+    /* Ancho completo para el mapa */
+    height: 400px;
+    /* Altura fija para el mapa */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    box-shadow: 10px 10px 10px #80A1BA;
+    /* Sombra azulada similar a los inputs */
+}
+
+/*==============================================================*/
+/*FOOTER CON ANIMACIONES DE OLAS Y REDES SOCIALES*/
+/*==============================================================*/
+
+/* Contenedor principal del footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    /* Elementos apilados verticalmente */
+    justify-content: center;
+    /* Centrado vertical */
+    align-items: center;
+    /* Centrado horizontal */
+    position: relative;
+    /* Para posicionamiento de las olas */
+    background: #3586ff;
+    /* Fondo azul brillante */
+    min-height: 80px;
+    /* Altura mínima compacta */
+    padding: 10px 30px;
+    /* Espaciado interno reducido */
+}
+
+/* Contenedores de iconos y secciones */
+footer .iconos,
+.sections {
+    position: relative;
+    /* Por encima de las olas */
+    display: flex;
+    justify-content: center;
+    /* Centrado horizontal */
+    align-items: center;
+    /* Centrado vertical */
+    margin: 10px 0;
+    /* Margen vertical */
+    flex-wrap: wrap;
+    /* Permite que se envuelvan en líneas */
+}
+
+/* Elementos de lista sin viñetas */
+footer .iconos li,
+footer .sections li {
+    list-style: none;
+}
+
+/* Iconos de redes sociales */
+footer .iconos li a {
+    text-decoration: none;
+    /* Sin subrayado */
+    color: #fff;
+    /* Color blanco */
+    font-size: 2em;
+    /* Tamaño grande para iconos */
+    margin: 0 10px;
+    /* Espaciado horizontal */
+    display: inline-block;
+    transition: 0.5s;
+    /* Transición suave para efectos */
+}
+
+/* Enlaces de secciones del footer */
+footer .sections li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    /* Tamaño mediano para texto */
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+    opacity: 0.75;
+    /* Ligeramente transparente por defecto */
+}
+
+/* Efecto hover en enlaces de secciones */
+footer .sections li a:hover {
+    opacity: 1;
+    /* Completamente opaco */
+    transform: translateY(-5px);
+    /* Pequeña elevación */
+}
+
+/* Efecto hover en iconos de redes sociales */
+footer .iconos li a:hover {
+    transform: translateY(-10px);
+    /* Mayor elevación que los enlaces */
+}
+
+/* Texto de copyright */
+footer p {
+    color: #fff;
+    font-size: 1.1em;
+    margin-top: 15px;
+    /* Margen superior */
+    margin-bottom: 10px;
+    /* Margen inferior */
+    text-align: center;
+}
+
+/* ANIMACIONES DE OLAS DECORATIVAS */
+
+/* Configuración base para todas las olas */
+footer .ola {
+    background: url(../images/Imagenes-fondos/wave.png);
+    /* Imagen de ola */
+    background-size: 1000px 80px;
+    /* Tamaño de la imagen de fondo */
+    position: absolute;
+    /* Posicionamiento absoluto */
+    top: -60px;
+    /* Posición superior para superponer con contenido anterior */
+    left: 0;
+    width: 100%;
+    /* Ancho completo */
+    height: 70px;
+    /* Altura reducida */
+}
+
+/* PRIMERA OLA - Ola principal visible */
+footer .ola#ola1 {
+    z-index: 1000;
+    /* Nivel más alto */
+    opacity: 1;
+    /* Completamente visible */
+    bottom: 0;
+    /* En la base del footer */
+    animation: moverOla 4s linear infinite;
+    /* Animación hacia la izquierda */
+}
+
+/* SEGUNDA OLA - Ola de respaldo */
+footer .ola#ola2 {
+    z-index: 999;
+    /* Nivel medio-alto */
+    opacity: 0.5;
+    /* Semi-transparente */
+    bottom: 10px;
+    /* Ligeramente elevada */
+    animation: moverOla2 4s linear infinite;
+    /* Animación hacia la derecha */
+}
+
+/* TERCERA OLA - Ola sutil */
+footer .ola#ola3 {
+    z-index: 1000;
+    /* Nivel alto */
+    opacity: 0.2;
+    /* Muy transparente */
+    bottom: 15px;
+    /* Más elevada */
+    animation: moverOla 3s linear infinite;
+    /* Animación más rápida hacia izquierda */
+}
+
+/* CUARTA OLA - Ola de acento */
+footer .ola#ola4 {
+    z-index: 1000;
+    /* Nivel alto */
+    opacity: 0.7;
+    /* Moderadamente transparente */
+    bottom: 20px;
+    /* Más elevada aún */
+    animation: moverOla2 3s linear infinite;
+    /* Animación más rápida hacia derecha */
+}
+
+/* ANIMACIÓN 1: Movimiento de ola de derecha a izquierda */
+@keyframes moverOla {
+    0% {
+        background-position-x: 1000px;
+    }
+
+    /* Inicia desde la derecha */
+    100% {
+        background-position-x: 0px;
+    }
+
+    /* Termina en la izquierda */
+}
+
+/* ANIMACIÓN 2: Movimiento de ola de izquierda a derecha */
+@keyframes moverOla2 {
+    0% {
+        background-position-x: 0px;
+    }
+
+    /* Inicia desde la izquierda */
+    100% {
+        background-position-x: 1000px;
+    }
+
+    /* Termina en la derecha */
+}
+
+
+/*==============================================================*/
+/*MEDIA QUERIES - DISEÑO RESPONSIVE*/
+/*==============================================================*/
+
+/* PANTALLAS MEDIANAS Y MÓVILES (máximo 800px) */
+@media (max-width: 800px) {
+
+    /* Ocultar elementos de navegación en móviles */
+    .hideOnMobile {
+        display: none;
+    }
+
+    /* Mostrar botón despegable en móviles */
+    .menu-boton {
+        display: block;
+    }
+
+    /* Quitar imagen de fondo en móviles por rendimiento */
+    article {
+        background-image: none;
+        padding-bottom: 0;
+    }
+
+    /* Grid del menú se convierte en columna única */
+    .contenedor-img {
+        display: flex;
+        flex-direction: column;
+        /* Apilado vertical en móviles */
+    }
+
+    /* Ajustar campos del formulario para móviles */
+    .form input,
+    .form select {
+        width: 90%;
+        /* Mayor ancho en móviles */
+    }
+
+    /* Reducir tamaño del título principal */
+    .menu-titulo {
+        font-size: 3rem;
+    }
+
+    .menu-contenedor h2 {
+        font-size: 3rem;
+    }
+
+    /* Ajustar tamaño de elementos del carousel */
+    .wrap {
+        grid-auto-columns: 400px;
+        /* Elementos más pequeños */
+    }
+
+    /* Imágenes del carousel más compactas */
+    .wrap img {
+        width: 350px;
+        /* Reducido de 500px */
+        height: 250px;
+        /* Reducido de 300px */
+    }
+
+    /* Texto del carousel más pequeño */
+    .wrap h2 {
+        font-size: 1.2rem;
+        /* Reducido de 1.5rem */
+    }
+
+
+    /* Reorganizar sección de reservas para móviles */
+    .reservas {
+        grid-template-columns: 1fr;
+        /* Una sola columna */
+        grid-template-areas:
+            "columna1"
+            /* Formulario arriba */
+            "columna3"
+            /* Información de contacto en medio */
+            "columna2";
+        /* Imagen del chef abajo */
+    }
+
+    /* Asignar áreas específicas a cada columna */
+    .columna1 {
+        grid-area: columna1;
+    }
+
+    .columna2 {
+        grid-area: columna2;
+    }
+
+    .columna2 img {
+        height: 450px;
+    }
+
+    .columna3 {
+        grid-area: columna3;
+    }
+
+    /* .columna2 img { height: 600px; margin: auto; } */
+    /* .contenedor-columna2 iframe { height: 400px; width: 600px; } */
+    .contenedor-columna2 {
+        width: 100%;
+    }
+
+    .contenedor-columna2 iframe {
+        width: 100%;
+        height: 400px;
+    }
+
+    .contactanos {
+        display: flex;
+        flex-direction: column;
+        /* Apilado vertical */
+        align-items: center;
+        /* Centrado horizontal */
+    }
+
+}
+
+/* MÓVILES PEQUEÑOS (máximo 576px) */
+@media(max-width:576px) {
+
+
+    h2,
+    span {
+        letter-spacing: 0px;
+    }
+
+    .menu-titulo {
+        font-size: 2rem;
+    }
+
+    .carousel {
+        /* Gradiente más suave y centrado para móvil */
+        mask-image: linear-gradient(to right,
+                transparent 0%,
+                rgba(0, 0, 0, 0.3) 5%,
+                black 15%,
+                black 85%,
+                rgba(0, 0, 0, 0.3) 95%,
+                transparent 100%);
+        -webkit-mask-image: linear-gradient(to right,
+                transparent 0%,
+                rgba(0, 0, 0, 0.3) 5%,
+                black 15%,
+                black 85%,
+                rgba(0, 0, 0, 0.3) 95%,
+                transparent 100%);
+
+        /* Ajustes adicionales para móvil */
+        width: 100%;
+        /* Usa todo el ancho disponible */
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    /* Contenedor del wrap más compacto */
+    .wrap {
+        gap: 1.5em;
+        /* Reducido de 2em */
+        padding-right: 1.5em;
+        /* Ajustado */
+        animation: spin 15s linear infinite;
+        /* Más lento para mejor visualización */
+    }
+
+    /* Elementos individuales mejor proporcionados */
+    .wrap-element {
+        flex: 0 0 4em;
+        /* Reducido de 5em */
+        gap: 1rem;
+        /* Reducido de 2rem */
+    }
+
+    /* Imágenes más pequeñas pero bien proporcionadas */
+    .wrap img {
+        width: 220px;
+        /* Reducido de 250px */
+        height: 140px;
+        /* Reducido de 150px */
+        border-radius: 8px;
+        /* Bordes más sutiles */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        /* Sombra más sutil */
+    }
+
+    /* Texto más legible */
+    .wrap h2 {
+        font-size: 0.9rem;
+        /* Más pequeño pero legible */
+        text-align: center;
+        padding: 0 5px;
+        /* Pequeño padding */
+        line-height: 1.2;
+        /* Mejor espaciado de líneas */
+    }
+
+    /* Mejora la visibilidad del gradiente en los bordes */
+    .carousel::before,
+    .carousel::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 20px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .carousel::before {
+        left: 0;
+        background: linear-gradient(to right,
+                rgba(255, 255, 255, 0.8) 0%,
+                transparent 100%);
+    }
+
+    .carousel::after {
+        right: 0;
+        background: linear-gradient(to left,
+                rgba(255, 255, 255, 0.8) 0%,
+                transparent 100%);
+    }
+
+    /* Sidebar ocupa la mitad de la pantalla en móviles muy pequeños */
+    .sidebar {
+        width: 50%;
+    }
+
+    .menu-contenedor {
+        margin: 0 1rem;
+        padding: 0 1rem;
+    }
+
+    .menu-contenedor h2 {
+        font-size: 2rem;
+    }
+
+    .contenedor-img {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contenedor-img a {
+        width: 100%;
+        height: auto;
+    }
+
+    .contenedor-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .reservas {
+        display: flex;
+        flex-direction: column;
+        margin: 0 1rem;
+        padding: 2rem 1rem;
+    }
+
+    .columna1,
+    .columna3 {
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    .columna2 {
+        display: none;
+    }
+
+    .contenedor-form {
+        flex-direction: column;
+    }
+
+    .contenedor-columna2 iframe {
+        height: 280px;
+    }
+
+    .contactanos {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 30px 5%;
+    }
+
+
+    .info-textarea {
+        width: 92%
+    }
+
+}

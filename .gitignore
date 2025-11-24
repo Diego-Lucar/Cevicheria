@@ -1,0 +1,35 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+
+# Carpetas de node_modules si usas npm
+node_modules/
+
+# Archivos de configuración local
+.env
+.vscode/
+
+# Archivos de respaldo
+*.bak
+*~
+
+# Archivos de logs
+logs/
+*.log
+
+# Archivos de caché
+.cache/
+
+# Archivos de sistema Windows
+ehthumbs.db
+Desktop.ini
+
+# Archivos de sistema Mac
+.DS_Store
+.AppleDouble
+.LSOverride
