@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function parsePrice(text) {
         return parseFloat(String(text).replace(/[^\d.]/g, '')) || 0;
     }
-    
+
     function formatPrice(n) {
         return `S/ ${n.toFixed(2)}`;
     }
@@ -20,6 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalPrecio = document.querySelector('.total-precio');
     const precioCarrito = document.querySelector('.precio-carrito');
     const btnProceder = document.getElementById('btn-proceder');
+    // ==================== MODAL DE PAGO ====================
+    const pagoModal = document.getElementById('pago-modal');
+    const pagoClose = document.querySelector('.pago-close');
+    const formPago = document.getElementById('form-pago');
+    const pagoTotalPrecio = document.getElementById('pago-total-precio');
+    const numeroTarjeta = document.getElementById('numero-tarjeta');
+    const fechaExpiracion = document.getElementById('fecha-expiracion');
+    const cvv = document.getElementById('cvv');
 
     function actualizarCarrito() {
         // Actualizar contador y precio en el botón
@@ -65,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function agregarAlCarrito(producto) {
         const existe = carrito.find(item => item.nombre === producto.nombre);
-        
+
         if (existe) {
             existe.cantidad += producto.cantidad;
         } else {
@@ -77,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 img: producto.img
             });
         }
-        
+
         totalCarrito = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
         actualizarCarrito();
     }
@@ -87,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!item) return;
 
         item.cantidad += cambio;
-        
+
         if (item.cantidad <= 0) {
             eliminarDelCarrito(id);
         } else {
@@ -151,13 +159,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 cantidad.value = Math.min(max, (+cantidad.value || 1) + 1);
                 updateTotal(section);
             });
-            
+
             disminuir.addEventListener('click', () => {
                 const min = +cantidad.min || 1;
                 cantidad.value = Math.max(min, (+cantidad.value || 1) - 1);
                 updateTotal(section);
             });
-            
+
             cantidad.addEventListener('input', () => {
                 const min = +cantidad.min || 1;
                 const max = +cantidad.max || 999;
@@ -171,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const qty = +overlay.querySelector('.cantidad').value || 1;
                 const unitPrice = parseFloat(overlay.dataset.unitPrice || '0');
                 const img = overlay.querySelector('.body img').src;
-                
+
                 // Agregar al carrito
                 agregarAlCarrito({
                     nombre: title,
@@ -179,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     cantidad: qty,
                     img: img
                 });
-                
+
                 closeOverlay(section);
             });
         }
@@ -221,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==================== EVENT LISTENERS ====================
-    
+
     // Abrir overlay de productos
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('.agregar');
@@ -255,9 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
     carritoItems.addEventListener('click', (e) => {
         const item = e.target.closest('.carrito-item');
         if (!item) return;
-        
+
         const id = item.dataset.id;
-        
+
         if (e.target.closest('.qty-inc')) {
             modificarCantidad(id, 1);
         } else if (e.target.closest('.qty-dec')) {
@@ -275,4 +283,120 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar carrito vacío
     actualizarCarrito();
+
+    // ==================== EVENT LISTENERS MODAL DE PAGO ====================
+    if (window.EmailService) {
+        window.EmailService.init();
+    }
+    // Abrir modal de pago
+    btnProceder.addEventListener('click', () => {
+        if (carrito.length === 0) return;
+
+        pagoTotalPrecio.textContent = formatPrice(totalCarrito);
+        carritoOverlay.hidden = true;
+        pagoModal.hidden = false;
+    });
+
+    // Cerrar modal de pago
+    pagoClose.addEventListener('click', () => {
+        pagoModal.hidden = true;
+    });
+
+    pagoModal.addEventListener('click', (e) => {
+        if (e.target === pagoModal) {
+            pagoModal.hidden = true;
+        }
+    });
+
+    // Formatear número de tarjeta (agregar espacios cada 4 dígitos)
+    numeroTarjeta.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
+        value = value.substring(0, 16);
+        const formatted = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+        e.target.value = formatted;
+
+        // Detectar tipo de tarjeta
+        const cardIcons = document.querySelectorAll('.card-icon');
+        cardIcons.forEach(icon => icon.classList.remove('active'));
+
+        if (value.startsWith('4')) {
+            cardIcons[0]?.classList.add('active'); // Visa
+        } else if (value.startsWith('5') || value.startsWith('2')) {
+            cardIcons[1]?.classList.add('active'); // Mastercard
+        }
+    });
+
+    // Formatear fecha de expiración
+    fechaExpiracion.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2, 4);
+        }
+        e.target.value = value;
+    });
+
+    // Solo números en CVV
+    cvv.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '');
+    });
+
+    // Enviar formulario de pago
+    formPago.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btnPagar = formPago.querySelector('.btn-pagar');
+        const btnText = btnPagar.querySelector('.btn-text');
+        const btnLoader = btnPagar.querySelector('.btn-loader');
+        const emailInput = document.getElementById('email');
+        const nombreTitular = document.getElementById('nombre-titular');
+
+        // Mostrar estado de carga
+        btnPagar.disabled = true;
+        btnText.textContent = 'Procesando...';
+        btnLoader.hidden = false;
+
+        // Simular procesamiento de pago
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        btnText.textContent = 'Enviando confirmación...';
+        let correoEnviado = false;
+        if (window.EmailService) {
+            const resultado = await window.EmailService.enviarConfirmacion(
+                emailInput.value,
+                nombreTitular.value,
+                carrito,
+                totalCarrito
+            );
+            correoEnviado = resultado.success;
+        }
+
+        // Mostrar éxito
+        btnText.textContent = '¡Pago exitoso!';
+        btnLoader.hidden = true;
+        btnPagar.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+
+        // Limpiar carrito y cerrar modal
+        setTimeout(() => {
+            const emailUsado = emailInput.value;
+
+            carrito = [];
+            totalCarrito = 0;
+            actualizarCarrito();
+            pagoModal.hidden = true;
+            formPago.reset();
+
+            // Restaurar botón
+            btnPagar.disabled = false;
+            btnText.textContent = 'Confirmar Pago';
+            btnPagar.style.background = '';
+
+        }, 1500);
+    });
+
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !pagoModal.hidden) {
+            pagoModal.hidden = true;
+        }
+    });
 });

@@ -462,7 +462,7 @@
                 <h2>Mi Carrito <span class="carrito-count">(0)</span></h2>
                 <button class="carrito-close" aria-label="Cerrar carrito">×</button>
             </div>
-            
+
             <div class="carrito-body">
                 <div class="carrito-items" id="carrito-items">
                     <!-- Los productos se agregarán dinámicamente aquí -->
@@ -472,7 +472,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="carrito-footer">
                 <div class="carrito-total">
                     <span>Total a pagar:</span>
@@ -506,6 +506,64 @@
         <p>© 2025 Cevichería | Todos los derechos reservados</p>
 
     </footer>
+    <!-- APARTADO PARA EL MODAL DE PAGO -->
+    <div id="pago-modal" class="pago-modal" hidden>
+        <div class="pago-modal-content">
+            <div class="pago-modal-header">
+                <h2>Datos de Pago</h2>
+                <button class="pago-close" aria-label="Cerrar">&times;</button>
+            </div>
+            <form id="form-pago" class="pago-form">
+                <div class="form-group">
+                    <label for="nombre-titular">Nombre del titular</label>
+                    <input type="text" id="nombre-titular" placeholder="Como aparece en la tarjeta" required>
+                </div>
+                <div class="form-group">
+                    <label for="numero-tarjeta">Número de tarjeta</label>
+                    <div class="input-icon">
+                        <input type="text" id="numero-tarjeta" placeholder="1234 5678 9012 3456" maxlength="19"
+                            required>
+                        <div class="card-icons">
+                            <img src="assets/images/svg/visa-4-logo-svgrepo-com.svg" alt="Visa" class="card-icon">
+                            <img src="assets/images/svg/mastercard-3-svgrepo-com.svg" alt="Mastercard"
+                                class="card-icon">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fecha-expiracion">Fecha de expiración</label>
+                        <input type="text" id="fecha-expiracion" placeholder="MM/AA" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <div class="input-icon">
+                            <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                            <span class="cvv-tooltip"
+                                title="Código de 3 o 4 dígitos en el reverso de tu tarjeta">?</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="pago-total">
+                    <span>Total a pagar:</span>
+                    <span id="pago-total-precio">S/ 0.00</span>
+                </div>
+                <button type="submit" class="btn-pagar">
+                    <span class="btn-text">Confirmar Pago</span>
+                    <span class="btn-loader" hidden></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="assets/js/EmailJs.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="assets/js/menu.js"></script>

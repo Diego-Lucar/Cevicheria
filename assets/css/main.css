@@ -432,15 +432,16 @@ h1,
 
 /* Nombres de categorías superpuestos con efecto glassmorphism */
 .contenedor-img span {
-    background-color: #f5f5f0c0;
+    text-transform: uppercase;
+    background-color: #ebebe78d;
     /* Fondo semitransparente */
     backdrop-filter: blur(7px);
-    /* Efecto de vidrio esmerilado */
+    /* Efecto de vidrio */
     position: relative;
     /* Por encima de la imagen */
     z-index: 2;
     /* Por encima de la imagen (mayor z-index) */
-    color: #6FA4AF;
+    color: #060b3d;
     /* Color específico para el texto */
     padding: .2em 1em;
     /* Espaciado interno */
@@ -450,9 +451,9 @@ h1,
     /* Ancho completo */
     text-align: start;
     /* Alineado a la izquierda */
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    font-weight: 600;
+    font-weight: bolder;
 
 }
 

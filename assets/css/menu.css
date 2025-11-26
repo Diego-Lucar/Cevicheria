@@ -882,6 +882,257 @@ footer .ola#ola4 {
     cursor: not-allowed;
     transform: none;
 }
+/* ==================================================================== */
+/*                      ESTILOS PARA EL MODAL DE PAGO                  */
+.pago-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.pago-modal[hidden] {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.pago-modal-content {
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: slideUp 0.4s ease;
+    overflow: hidden;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.pago-modal-header {
+    background: linear-gradient(135deg, #1e3a5f, #2d5a87);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pago-modal-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.pago-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pago-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.pago-form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group input {
+    padding: 0.875rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2d5a87;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(45, 90, 135, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon input {
+    width: 100%;
+    padding-right: 80px;
+}
+
+.input-icon #numero-tarjeta {
+    width: 95%;
+    padding-right: 0;
+}
+
+.input-icon #cvv{
+    width: 85%;
+    padding-right: 0;
+}
+
+.card-icons {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 4px;
+}
+
+.card-icon {
+    width: 32px;
+    height: auto;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.card-icon.active {
+    opacity: 1;
+}
+
+.cvv-tooltip {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: #9ca3af;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+}
+
+.pago-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: 12px;
+    margin-top: 0.5rem;
+}
+
+.pago-total span:first-child {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #374151;
+}
+
+#pago-total-precio {
+    font-size: 1.4em;
+    /* font-weight: 600; */
+    color: #1e3a5f;
+}
+
+.btn-pagar {
+    background: linear-gradient(135deg, #1e3a5f, #2d5a87);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.btn-pagar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(30, 58, 95, 0.3);
+}
+
+.btn-pagar:active {
+    transform: translateY(0);
+}
+
+.btn-pagar:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.btn-loader[hidden] {
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
 
 /* ==================================================================== */
 /*                      ESTILOS RESPONSIVOS PARA TABLETS              */
@@ -1315,5 +1566,19 @@ footer .ola#ola4 {
         margin: 0;
         flex-direction: column;
         gap: 16px;
+    }
+    .input-icon #cvv{
+    width: 95%;
+    padding-right: 0;
+}
+    .pago-modal-content {
+        max-width: 100%;
+        border-radius: 20px 20px 0 0;
+        position: absolute;
+        bottom: 0;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
     }
 }
