@@ -1,7 +1,5 @@
 /* Importación de fuentes de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Stalinist+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Dancing+Script:wght@400;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Story+Script&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 
 /* =====================================================
    RESET CSS Y VARIABLES GLOBALES
@@ -11,6 +9,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -18,8 +17,38 @@ html {
 }
 
 :root {
+    /* Fuentes */
     --font-display: 'Cormorant Garamond', serif;
     --font-body: 'Lato', sans-serif;
+    --font-accent: 'Dancing Script', cursive;
+    
+    /* Paleta Marina - Colores Principales */
+    --navy-dark: #0A1628;
+    --navy-medium: #1a3a5c;
+    --ocean-blue: #2d6a8f;
+    --seafoam: #4ecdc4;
+    
+    /* Colores Neutros */
+    --sand-light: #f5f0e8;
+    --sand-dark: #d4c5b0;
+    --white: #ffffff;
+    --black: #0a0a0a;
+    
+    /* Colores de Acento */
+    --coral: #ff6b6b;
+    --gold: #d4a574;
+    --lime-accent: #a8e6cf;
+    
+    /* Colores Funcionales */
+    --text-dark: #0A1628;
+    --text-light: #f5f0e8;
+    --overlay-dark: rgba(10, 22, 40, 0.85);
+    --overlay-light: rgba(245, 240, 232, 0.9);
+    
+    /* Gradientes */
+    --gradient-ocean: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-medium) 50%, var(--ocean-blue) 100%);
+    --gradient-seafoam: linear-gradient(90deg, var(--seafoam), var(--gold));
+    --gradient-coral: linear-gradient(135deg, var(--coral) 0%, var(--gold) 100%);
 }
 
 
@@ -27,7 +56,8 @@ html {
 /* Configuración básica del body */
 body {
     min-height: 70vh;
-    font-family: var(--font-body);
+    /* font-family: var(--font-body); */
+    background-color: var(--sand-light);
     line-height: 1.6;
 }
 
@@ -38,9 +68,8 @@ body {
 /* Contenedor principal de la navbar con efecto glassmorphism */
 
 nav {
-    background-color: rgba(25, 63, 109, 0.858);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 50%, #2d6a8f 100%);
+    /* backdrop-filter: blur(7px); */
     position: fixed;
     /* Fija en la parte superior al hacer scroll */
     top: 0;
@@ -50,28 +79,13 @@ nav {
     height: auto;
     z-index: 999;
     /* Por encima de otros elementos */
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     /* Transición suave para efectos */
 }
 
-.nav-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    pointer-events: none;
-    /* filter: brightness(0.6); */
-}
+
 
 /* Lista de navegación*/
-
-.bar ul,
-.bar a {
-    position: relative;
-    z-index: 1;
-}
 
 .bar img {
     height: 55px;
@@ -90,13 +104,14 @@ nav ul {
 
 /* Altura uniforme para elementos de navegación */
 nav li {
-    height: 60px;
+    height: 70px;
 }
 
 /* Estilos para enlaces de navegación */
 nav a {
-    font-family: var(--font-body);
-    letter-spacing: 0.5px;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 1px;
     height: 100%;
     padding: 0 30px;
     /* Espaciado horizontal interno */
@@ -107,23 +122,79 @@ nav a {
     /* Centra verticalmente el texto */
     color: #ffff;
     /* Texto blanco */
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 500;
+    position: relative;
+    &:hover{
+        color: #e9a060;
+    }
+}
+nav .bar > li.hideOnMobile > a::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    /* background: linear-gradient(90deg, #4ecdc4, #d4a574); */
+    background: #e9a060;
+    transition: width 0.3s ease;
 }
 
-/* Efecto hover en enlaces */
-nav a:hover {
-    color: #20a0db;
-    /* Cambia a azul claro al pasar mouse */
+/* AÑADIR EL HOVER para que la línea aparezca */
+nav .bar > li.hideOnMobile > a:hover::after {
+    width: 70%;
 }
 
 /* Logo/primer elemento - se posiciona a la izquierda */
 nav li:first-child {
     margin-right: auto;
-
+    padding-left: 2em;
     /* Empuja otros elementos a la derecha */
 }
+nav .bar > li.hideOnMobile > a::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    /* background: linear-gradient(90deg, #4ecdc4, #d4a574); */
+    background: #e9a060;
+    transition: width 0.3s ease;
+}
+.logo-container a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
 
+.logo-container img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4ecdc4;
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.4);
+    transition: all 0.3s ease;
+}
+
+.logo-container:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(78, 205, 196, 0.6);
+}
+
+.logo-text {
+    font-family: var(--font-display);
+    font-style: oblique;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 2px;
+}
 /* MENÚ LATERAL (SIDEBAR) PARA DISPOSITIVOS MÓVILES */
 .sidebar {
     position: fixed;
@@ -133,7 +204,7 @@ nav li:first-child {
     /* Se desliza desde la derecha */
     height: 100vh;
     /* Altura completa de la ventana */
-    width: 250px;
+    width: 280px;
     /* Ancho fijo */
     z-index: 999;
     /* Por encima de otros elementos */
@@ -203,7 +274,7 @@ article {
 }
 
 main {
-    padding-top: 3.1rem;
+    padding-top: 70px;
 }
 
 /* Título de la sección "Los populares" */
@@ -211,9 +282,9 @@ h1,
 .menu-titulo,
 .menu-contenedor h2,
 .contactanos h1 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    letter-spacing: 2.5px;
     line-height: 1.2;
 }
 
@@ -255,7 +326,7 @@ h1,
     justify-content: center;
     gap: 2em;
     /* Espacio entre elementos */
-    animation: spin 12s linear infinite;
+    animation: spin 15s linear infinite;
     /* Animación infinita de 12 segundos */
     padding-right: 1em;
 }
@@ -269,7 +340,7 @@ h1,
     display: flex;
     flex-direction: column;
     /* Imagen arriba, texto abajo */
-    gap: 2rem;
+    gap: .5rem;
     /* Espacio entre imagen y texto */
 }
 
@@ -290,10 +361,11 @@ h1,
 /* Títulos de los platos */
 .wrap h2,
 .contenedor-img span {
-    font-family: var(--font-display);
+    /* font-family: var(--font-display); */
+    font-family: "Titillium Web", sans-serif;
     font-weight: 600;
     letter-spacing: 0.3px;
-    color: #0B167F;
+    color: #0A1C26;
 }
 
 /* Animación de movimiento infinito del carousel */
@@ -317,6 +389,7 @@ h1,
 /* Contenedor principal de la sección menú */
 .menu-contenedor {
     scroll-margin-top: 20px;
+    background-color: var(--sand-light);
     display: flex;
     flex-direction: column;
     /* Elementos apilados verticalmente */
@@ -435,25 +508,23 @@ h1,
     text-transform: uppercase;
     background-color: #ebebe78d;
     /* Fondo semitransparente */
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(10px);
     /* Efecto de vidrio */
     position: relative;
     /* Por encima de la imagen */
     z-index: 2;
     /* Por encima de la imagen (mayor z-index) */
-    color: #060b3d;
+    /* color: #0A1C26; */
+    color: var(--navy-dark);
     /* Color específico para el texto */
     padding: .2em 1em;
     /* Espaciado interno */
-    margin-left: 25px;
-    /* Margen izquierdo */
     width: 100%;
     /* Ancho completo */
     text-align: start;
     /* Alineado a la izquierda */
     font-size: 1.3rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    font-weight: bolder;
+    /* font-weight: bolder; */
 
 }
 
@@ -530,7 +601,7 @@ h1,
 
 /* Título del formulario de reserva */
 .columna1 h1 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     /* Espacio inferior */
     margin-bottom: 0.5rem;
     display: flex;
@@ -558,14 +629,15 @@ h1,
 input,
 textarea,
 button {
-    font-family: var(--font-body);
+    /* font-family: var(--font-body); */
+    font-family: "Titillium Web", sans-serif;
     font-weight: 400;
 }
 
 /* Estilos para inputs y selects del formulario */
 .form input,
 .form select {
-    width: 85%;
+    width: 100%;
     padding: 0.5rem;
     margin-bottom: .5rem;
     border: 1px solid #ccc;
@@ -589,7 +661,7 @@ button {
 
 .contenedor-form2 input,
 .contenedor-form2 select {
-    width: auto;
+    width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
@@ -668,7 +740,7 @@ button {
 
 /* Títulos de las secciones de contacto */
 .columna3 h1 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     color: #0b167f;
     /* Azul corporativo */
 }
@@ -1156,119 +1228,101 @@ footer .ola#ola4 {
 /* MÓVILES PEQUEÑOS (máximo 576px) */
 @media(max-width:576px) {
 
-
-    h2,
+       h2,
     span {
         letter-spacing: 0px;
     }
 
+    /* ===== NAVBAR ===== */
+    nav {
+        height: 60px;
+    }
+
+    nav li {
+        height: 60px;
+    }
+
+    .logo-container img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    nav li:first-child {
+        padding-left: 1em;
+    }
+
+    nav a {
+        padding: 0 15px;
+    }
+
+    .sidebar {
+        width: 65%;
+    }
+
+    /* ===== MAIN ===== */
+    main {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+
+    /* ===== SECCIÓN POPULARES ===== */
     .menu-titulo {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        padding-bottom: 1rem;
     }
 
     .carousel {
-        /* Gradiente más suave y centrado para móvil */
+        width: 95%;
         mask-image: linear-gradient(to right,
                 transparent 0%,
-                rgba(0, 0, 0, 0.3) 5%,
-                black 15%,
-                black 85%,
-                rgba(0, 0, 0, 0.3) 95%,
+                black 10%,
+                black 90%,
                 transparent 100%);
         -webkit-mask-image: linear-gradient(to right,
                 transparent 0%,
-                rgba(0, 0, 0, 0.3) 5%,
-                black 15%,
-                black 85%,
-                rgba(0, 0, 0, 0.3) 95%,
+                black 10%,
+                black 90%,
                 transparent 100%);
-
-        /* Ajustes adicionales para móvil */
-        width: 100%;
-        /* Usa todo el ancho disponible */
-        margin: 0 auto;
-        padding: 0 10px;
     }
 
-    /* Contenedor del wrap más compacto */
     .wrap {
-        gap: 1.5em;
-        /* Reducido de 2em */
-        padding-right: 1.5em;
-        /* Ajustado */
-        animation: spin 15s linear infinite;
-        /* Más lento para mejor visualización */
+        gap: 1.2em;
+        padding-right: 1.2em;
+        animation: spin 20s linear infinite;
     }
 
-    /* Elementos individuales mejor proporcionados */
     .wrap-element {
-        flex: 0 0 4em;
-        /* Reducido de 5em */
-        gap: 1rem;
-        /* Reducido de 2rem */
+        flex: 0 0 auto;
+        gap: 0.5rem;
     }
 
-    /* Imágenes más pequeñas pero bien proporcionadas */
     .wrap img {
-        width: 220px;
-        /* Reducido de 250px */
-        height: 140px;
-        /* Reducido de 150px */
+        width: 200px;
+        height: 130px;
         border-radius: 8px;
-        /* Bordes más sutiles */
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        /* Sombra más sutil */
     }
 
-    /* Texto más legible */
     .wrap h2 {
-        font-size: 0.9rem;
-        /* Más pequeño pero legible */
+        font-size: 0.85rem;
         text-align: center;
-        padding: 0 5px;
-        /* Pequeño padding */
-        line-height: 1.2;
-        /* Mejor espaciado de líneas */
+        line-height: 1.3;
     }
 
-    /* Mejora la visibilidad del gradiente en los bordes */
-    .carousel::before,
-    .carousel::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 20px;
-        z-index: 2;
-        pointer-events: none;
-    }
-
-    .carousel::before {
-        left: 0;
-        background: linear-gradient(to right,
-                rgba(255, 255, 255, 0.8) 0%,
-                transparent 100%);
-    }
-
-    .carousel::after {
-        right: 0;
-        background: linear-gradient(to left,
-                rgba(255, 255, 255, 0.8) 0%,
-                transparent 100%);
-    }
-
-    /* Sidebar ocupa la mitad de la pantalla en móviles muy pequeños */
-    .sidebar {
-        width: 50%;
-    }
-
+    /* ===== SECCIÓN MENÚ ===== */
     .menu-contenedor {
-        margin: 0 1rem;
         padding: 0 1rem;
+        gap: 2rem;
     }
 
     .menu-contenedor h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        padding-top: 2rem;
     }
 
     .contenedor-img {
@@ -1278,49 +1332,134 @@ footer .ola#ola4 {
     }
 
     .contenedor-img a {
-        width: 100%;
-        height: auto;
+        min-height: 150px;
     }
 
-    .contenedor-img img {
-        width: 100%;
-        height: auto;
+    .contenedor-img span {
+        font-size: 1rem;
+        padding: 0.4em 0.8em;
     }
 
+    /* ===== SECCIÓN RESERVAS ===== */
     .reservas {
         display: flex;
         flex-direction: column;
-        margin: 0 1rem;
         padding: 2rem 1rem;
+        gap: 1.5rem;
+        min-height: auto;
     }
 
     .columna1,
     .columna3 {
         width: 100%;
-        padding: 8px 0;
+        padding: 0.5rem 0;
+    }
+
+    .columna1 h1,
+    .columna3 h1 {
+        font-size: 1.8rem;
     }
 
     .columna2 {
         display: none;
     }
 
+    .columna3 {
+        gap: 1.5rem;
+    }
+
     .contenedor-form {
         flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form {
+        width: 100%;
+    }
+
+    .form input,
+    .form select {
+        width: 100%;
+    }
+
+    .contenedor-form2 {
+        width: 100%;
+    }
+
+    .contenedor-form2 input,
+    .contenedor-form2 select,
+    .contenedor-form2 button {
+        width: 100%;
+    }
+
+    /* ===== SECCIÓN CONTACTO ===== */
+    .contactanos {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem 1rem;
+        margin-bottom: 30px;
+    }
+
+    .contactanos h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .contenedor-columna1,
+    .contenedor-columna2 {
+        width: 100%;
+    }
+
+    .info-content {
+        gap: 1rem;
+    }
+
+    .info-input {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .info-textarea {
+        width: 100%;
+        gap: 1.5rem;
+    }
+
+    textarea {
+        height: 120px;
+    }
+
+    .btn-enviar {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 15px;
     }
 
     .contenedor-columna2 iframe {
-        height: 280px;
+        height: 250px;
     }
 
-    .contactanos {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 30px 5%;
+    /* ===== FOOTER ===== */
+    footer {
+        padding: 10px 15px;
     }
 
-
-    .info-textarea {
-        width: 92%
+    footer .iconos li a {
+        font-size: 1.5em;
+        margin: 0 8px;
     }
 
+    footer .sections li a {
+        font-size: 1rem;
+        margin: 0 8px;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    footer .ola {
+        height: 50px;
+        top: -40px;
+    }
 }

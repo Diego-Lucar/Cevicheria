@@ -1,35 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cevichería La Jama - Auténticos Sabores Peruanos</title>
     <link rel="icon" type="image/jpeg" href="assets/logoCevicheria.jpg">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
 </head>
+
 <body>
     <header>
-         <nav>
-            <video class="nav-video" src="assets/videos/855946-hd_1280_720_60fps.mp4" type="video/mp4" autoplay muted loop></video>
+        <nav>
             <ul class="sidebar">
-                <li onclick=hideSidebar(event)><a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" color="white" fill="#000000"><path d="m177-120-57-57 184-183H200v-80h240v240h-80v-104L177-120Zm343-400v-240h80v104l183-184 57 57-184 183h104v80H520Z"/></svg></a></li>
+                <li class="sidebar-close" onclick="hideSidebar(event)">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px"
+                            fill="currentColor">
+                            <path
+                                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                        </svg>
+                    </a>
+                </li>
                 <li><a href="#menu">Menú</a></li>
                 <li><a href="#reservas">Reservas</a></li>
-                <li><a href="#contactanos">Contactanos</a></li>
+                <li><a href="#contactanos">Contáctanos</a></li>
             </ul>
             <ul class="bar">
-                <li><a href="#"><img src="assets/logoCevicheria.jpg" alt="Logo Cevichería"></a></li>
+                <li class="logo-container">
+                    <a href="#">
+                        <img src="assets/logoCevicheria.jpg" alt="Logo Cevichería">
+                        <span class="logo-text">La Jama</span>
+                    </a>
+                </li>
                 <li class="hideOnMobile"><a href="#menu">Menú</a></li>
                 <li class="hideOnMobile"><a href="#reservas">Reservas</a></li>
-                <li class="hideOnMobile"><a href="#contactanos">Contactanos</a></li>
-                <li class="menu-boton" onclick=showSidebar(event) ><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+                <li class="hideOnMobile"><a href="#contactanos">Contáctanos</a></li>
+                <li class="menu-boton" onclick="showSidebar(event)">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px"
+                            fill="currentColor">
+                            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                        </svg>
+                    </a>
+                </li>
             </ul>
-         </nav>
+        </nav>
     </header>
     <main>
         <article>
-             <h2 class="menu-titulo">Los populares</h2>
+            <h2 class="menu-titulo">Los populares</h2>
             <div class="carousel">
                 <div class="wrap">
                     <div class="wrap-element">
@@ -78,45 +100,45 @@
             </div>
         </article>
         <section id="menu" class="menu-contenedor">
-                <h2>Nuestro menú</h2>                
-                <div class="contenedor-img">
-                    <div class="area1">
-                        <a href="Menu.html#leches_de_tigre">
-                            <img src="assets/images/Images-menú/leche de tigre.jpg" alt="Leches de tigre">
-                            <span>Leches de tigre</span>
-                        </a>
-                    </div>
-                    <div class="area2">
-                        <a href="Menu.html#ceviches">
-                            <img src="assets/images/Images-menú/ceviche.jpg" alt="Ceviches">
-                            <span>Ceviches</span>
-                        </a>
-                    </div>
-                    <div class="area3">
-                        <a href="Menu.html#sopas_y_sudados">
-                            <img src="assets/images/Images-menú/sudados.jpg" alt="Sopas y sudados">
-                            <span>Sopas y sudados</span>
-                        </a>
-                    </div>
-                    <div class="area4">
-                        <a href="Menu.html#tiraditos">
-                            <img src="assets/images/Images-menú/tiradito.jpg" alt="Tiraditos">
-                            <span>Tiraditos</span>
-                        </a>
-                    </div>
-                    <div class="area5">
-                        <a href="Menu.html#arroces">
-                            <img src="assets/images/Images-menú/arrozconmariscos.jpg" alt="Arroces">
-                            <span>Arroces</span>
-                        </a>
-                    </div>
-                    <div class="area6">
-                        <a href="Menu.html#jaleas">
-                            <img src="assets/images/Images-menú/jalea.jpg" alt="Piqueos y jaleas">
-                            <span>Piqueos y Jaleas</span>
-                        </a>
-                    </div>
+            <h2>Nuestro menú</h2>
+            <div class="contenedor-img">
+                <div class="area1">
+                    <a href="Menu.html#leches_de_tigre">
+                        <img src="assets/images/Images-menú/leche de tigre.jpg" alt="Leches de tigre">
+                        <span>Leches de tigre</span>
+                    </a>
                 </div>
+                <div class="area2">
+                    <a href="Menu.html#ceviches">
+                        <img src="assets/images/Images-menú/ceviche.jpg" alt="Ceviches">
+                        <span>Ceviches</span>
+                    </a>
+                </div>
+                <div class="area3">
+                    <a href="Menu.html#sopas_y_sudados">
+                        <img src="assets/images/Images-menú/sudados.jpg" alt="Sopas y sudados">
+                        <span>Sopas y sudados</span>
+                    </a>
+                </div>
+                <div class="area4">
+                    <a href="Menu.html#tiraditos">
+                        <img src="assets/images/Images-menú/tiradito.jpg" alt="Tiraditos">
+                        <span>Tiraditos</span>
+                    </a>
+                </div>
+                <div class="area5">
+                    <a href="Menu.html#arroces">
+                        <img src="assets/images/Images-menú/arrozconmariscos.jpg" alt="Arroces">
+                        <span>Arroces</span>
+                    </a>
+                </div>
+                <div class="area6">
+                    <a href="Menu.html#jaleas">
+                        <img src="assets/images/Images-menú/jalea.jpg" alt="Piqueos y jaleas">
+                        <span>Piqueos y Jaleas</span>
+                    </a>
+                </div>
+            </div>
         </section>
         <section class="reservas" id="reservas">
             <div class="columna1">
@@ -162,31 +184,39 @@
                 <img src="assets/images/Imagenes-fondos/Mascota-Gordo-SF.png" alt="Mascota">
             </div>
             <div class="columna3">
-                    <h1>Telefonos</h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m136-144-92-90q-12-12-12-28t12-28q88-95 203-142.5T480-480q118 0 232.5 47.5T916-290q12 12 12 28t-12 28l-92 90q-11 11-25.5 12t-26.5-8l-116-88q-8-6-12-14t-4-18v-114q-38-12-78-19t-82-7q-42 0-82 7t-78 19v114q0 10-4 18t-12 14l-116 88q-12 9-26.5 8T136-144Zm104-202q-29 15-56 34.5T128-268l40 40 72-56v-62Zm480 2v60l72 56 40-38q-29-26-56-45t-56-33Zm-480-2Zm480 2ZM440-680v-200h80v200h-80Zm264 114-56-58 142-142 56 58-142 142Zm-448 0L114-708l56-58 142 142-56 58Z"/></svg>
-                    <div class="telefono">
-                        <p>SJL</p>
-                        <p>(01) 234-5678</p>
-                        <p>+51 987 654 321</p>
-                    </div>
-                    <!-- <div class="telefono">
+                <h1>Telefonos</h1>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#000000">
+                    <path
+                        d="m136-144-92-90q-12-12-12-28t12-28q88-95 203-142.5T480-480q118 0 232.5 47.5T916-290q12 12 12 28t-12 28l-92 90q-11 11-25.5 12t-26.5-8l-116-88q-8-6-12-14t-4-18v-114q-38-12-78-19t-82-7q-42 0-82 7t-78 19v114q0 10-4 18t-12 14l-116 88q-12 9-26.5 8T136-144Zm104-202q-29 15-56 34.5T128-268l40 40 72-56v-62Zm480 2v60l72 56 40-38q-29-26-56-45t-56-33Zm-480-2Zm480 2ZM440-680v-200h80v200h-80Zm264 114-56-58 142-142 56 58-142 142Zm-448 0L114-708l56-58 142 142-56 58Z" />
+                </svg>
+                <div class="telefono">
+                    <p>SJL</p>
+                    <p>(01) 234-5678</p>
+                    <p>+51 987 654 321</p>
+                </div>
+                <!-- <div class="telefono">
                         <p>La Victoria</p>
                         <p>(01) 432-7865</p>
                         <p>+51 123 456 789</p>
                     </div> -->
 
-                    <div class="horario">
-                        <h1>Horario de <br> atención</h1>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg>
-                        <p>Lunes-Sabado: 11:00AM-5:00PM</p>
-                        <p>After Office (Jueves-Viernes): <br> 6:00PM-9:00PM</p>
-                    </div>
+                <div class="horario">
+                    <h1>Horario de <br> atención</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#e3e3e3">
+                        <path
+                            d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+                    </svg>
+                    <p>Lunes-Sabado: 11:00AM-5:00PM</p>
+                    <p>After Office (Jueves-Viernes): <br> 6:00PM-9:00PM</p>
+                </div>
             </div>
         </section>
         <section class="contactanos" id="contactanos">
-          <div class="contenedor-columna1">
-               <h1>Contactate con nosotros</h1>
-               <div class="info-content">
+            <div class="contenedor-columna1">
+                <h1>Contactate con nosotros</h1>
+                <div class="info-content">
                     <div class="info-input">
                         <input type="text" placeholder="Nombre" required>
                         <input type="text" placeholder="Apellido" required>
@@ -195,16 +225,20 @@
                         <input type="email" placeholder="Correo Electrónico" required>
                         <input type="tel" placeholder="Teléfono" required>
                     </div>
-               </div>
-               <div class="info-textarea">
-                    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                </div>
+                <div class="info-textarea">
+                    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Escribe tu mensaje aquí..."
+                        required></textarea>
                     <button type="submit" class="btn-enviar">Enviar</button>
-               </div>
-          </div>  
-          <div class="contenedor-columna2">
-            <h1>Nuestra ubicación</h1>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1325.96958135247!2d-77.00829694755755!3d-11.983914240076192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c50069380bfd%3A0x1f025354730da36!2sCevicheria%20La%20Jama!5e1!3m2!1ses-419!2spe!4v1759769691163!5m2!1ses-419!2spe"  style="border:none;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+                </div>
+            </div>
+            <div class="contenedor-columna2">
+                <h1>Nuestra ubicación</h1>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1325.96958135247!2d-77.00829694755755!3d-11.983914240076192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c50069380bfd%3A0x1f025354730da36!2sCevicheria%20La%20Jama!5e1!3m2!1ses-419!2spe!4v1759769691163!5m2!1ses-419!2spe"
+                    style="border:none;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </section>
 
     </main>
@@ -229,11 +263,12 @@
             <li><a href="#contacto">Contacto</a></li>
         </ul>
         <p>© 2025 Cevichería | Todos los derechos reservados</p>
-    
+
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>     -->
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
