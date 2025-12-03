@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Krona+One&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Stalinist+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montaga&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Story+Script&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -7,7 +8,7 @@
 
 body {
     min-height: 70vh;
-    background:  #f5f0e8;
+    background: #f5f0e8;
     /* font-family: 'Times New Roman', Times, serif; */
 }
 
@@ -159,15 +160,15 @@ html {
     font-size: 1em;
     border-radius: 16px;
     color: #fff;
-    background:  #0b177fc2;
+    background: #0b177fc2;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    &:hover{
+
+    &:hover {
         scale: calc(1.1);
         box-shadow: 0 0 5px #0b177f, 0 0 10px #0b177f, 0 0 20px #0b177f;
     }
 }
-
 
 main {
     display: flex;
@@ -889,6 +890,7 @@ footer .ola#ola4 {
     cursor: not-allowed;
     transform: none;
 }
+
 /* ==================================================================== */
 /*                      ESTILOS PARA EL MODAL DE PAGO                  */
 .pago-modal {
@@ -909,8 +911,13 @@ footer .ola#ola4 {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .pago-modal-content {
@@ -928,6 +935,7 @@ footer .ola#ola4 {
         opacity: 0;
         transform: translateY(30px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -1028,7 +1036,7 @@ footer .ola#ola4 {
     padding-right: 0;
 }
 
-.input-icon #cvv{
+.input-icon #cvv {
     width: 85%;
     padding-right: 0;
 }
@@ -1138,7 +1146,9 @@ footer .ola#ola4 {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* ==================================================================== */
@@ -1369,7 +1379,7 @@ footer .ola#ola4 {
         font-size: 15px;
     }
 
-    
+
     footer {
         padding: 15px 25px;
         min-height: 90px;
@@ -1386,7 +1396,7 @@ footer .ola#ola4 {
         margin-top: 12px;
     }
 
-    
+
     footer .ola {
         background-size: 800px 70px;
         height: 65px;
@@ -1574,18 +1584,42 @@ footer .ola#ola4 {
         flex-direction: column;
         gap: 16px;
     }
-    .input-icon #cvv{
-    width: 95%;
-    padding-right: 0;
-}
+
+    .input-icon #cvv {
+        width: 95%;
+        padding-right: 0;
+    }
+
     .pago-modal-content {
         max-width: 100%;
         border-radius: 20px 20px 0 0;
         position: absolute;
         bottom: 0;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    .carrito-footer {
+        padding: 15px;
+        padding-bottom: calc(15px + env(safe-area-inset-bottom, 20px));
+        /* Compensa la barra de navegación */
+        position: sticky;
+        bottom: 0;
+        background: #f8f9fa;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .carrito-total {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .btn-proceder {
+        padding: 14px 16px;
+        font-size: 15px;
+        border-radius: 10px;
     }
 }
